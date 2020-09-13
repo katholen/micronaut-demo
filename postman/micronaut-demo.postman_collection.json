@@ -1,0 +1,60 @@
+{
+  "info": {
+    "_postman_id": "4d037363-eb87-49df-af2d-a1e8039ea62b",
+    "name": "micronaut-demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "02",
+      "item": [
+        {
+          "name": "GET /hello",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/hello",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "hello"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /hello?name=name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/hello?name=Kevin",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "hello"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Kevin"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
