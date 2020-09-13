@@ -56,4 +56,24 @@ class CreateUserTest : BaseUsersControllerTest() {
             }
         }
     }
+
+    @Test
+    fun unable_to_create_a_user_with_an_existing_userName() {
+        // Create a valid request and set the userName equal to an empty string
+        val request = validUser()
+
+        // Create the user successfully and assert that it was successful
+        val response = createUser(request)
+        assertEquals(HttpStatus.CREATED, response.status)
+
+        // Attempt to create a user with the same userName and it should fail
+        assertThrows<HttpClientResponseException> {
+            try {
+                createUser(request)
+            } catch (e: HttpClientResponseException) {
+                assertEquals(HttpStatus.CONFLICT, e.status)
+                throw e
+            }
+        }
+    }
 }
