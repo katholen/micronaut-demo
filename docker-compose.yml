@@ -1,0 +1,11 @@
+version: "3.5"
+
+services:
+  postgres:
+    image: postgres:11
+    environment:
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_USER=root
+      - POSTGRES_DB=dev
+    ports:
+      - "5432:5432"
