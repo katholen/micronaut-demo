@@ -20,8 +20,7 @@ open class BaseUsersControllerTest {
 
     @BeforeEach
     fun setup() {
-        client =
-            DefaultHttpClient(server.url)
+        client = DefaultHttpClient(server.url)
     }
 
     @AfterEach
