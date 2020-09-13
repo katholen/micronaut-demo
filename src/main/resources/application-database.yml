@@ -1,0 +1,12 @@
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/dev
+    driver-class-name: org.postgresql.Driver
+    username: ${USERNAME:root}
+    password: ${PASSWORD}
+    dialect: POSTGRES
+---
+flyway:
+  datasources:
+    default:
+      locations: classpath:sql

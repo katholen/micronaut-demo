@@ -6,12 +6,18 @@ import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.netty.DefaultHttpClient
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.annotation.MicronautTest
+import io.micronaut.test.support.TestPropertyProvider
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.TestInstance
+import org.testcontainers.containers.PostgreSQLContainer
 import javax.inject.Inject
 
-@MicronautTest
-open class BaseUsersControllerTest {
+@MicronautTest(
+    environments = ["database", "test"]
+)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+open class BaseUsersControllerTest : TestPropertyProvider {
 
     @Inject
     lateinit var server: EmbeddedServer
@@ -20,9 +26,10 @@ open class BaseUsersControllerTest {
     lateinit var usersRepository: UsersRepository
 
     private lateinit var client: HttpClient
+    private val postgreSQLContainer: PostgreSQLContainer<Nothing> = PostgreSQLContainer()
 
     @BeforeEach
-    fun setup() {
+    fun beforeEach() {
         client = DefaultHttpClient(server.url)
     }
 
@@ -30,6 +37,11 @@ open class BaseUsersControllerTest {
     fun teardown() {
         client.close()
         usersRepository.deleteAll()
+    }
+
+    override fun getProperties(): Map<String, String> {
+        postgreSQLContainer.start()
+        return mapOf("datasources.default.url" to postgreSQLContainer.jdbcUrl)
     }
 
     protected fun validUser(): MutableMap<String, String> {
