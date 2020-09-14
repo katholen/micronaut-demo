@@ -29,7 +29,7 @@ class GetUserTest : BaseUsersControllerTest() {
     }
 
     @Test
-    fun when_requesting_an_account_that_does_not_exist_return_404() {
+    fun when_requesting_a_user_that_does_not_exist_return_404() {
         assertThrows<HttpClientResponseException> {
             try {
                 // Attempt to get a user that does not exist
