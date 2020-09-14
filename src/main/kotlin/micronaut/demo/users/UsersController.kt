@@ -12,14 +12,14 @@ import javax.validation.Valid
 @Validated
 @Controller("/users")
 class UsersController(
-    private val usersRepository: UsersRepository
+    private val usersMapRepository: UsersMapRepository // Inject the Singleton of UsersMapRepository
 ) {
 
     @Post
     fun create(
         @Valid @Body user: User
     ): HttpResponse<User> {
-        usersRepository.save(user)
+        usersMapRepository.save(user)
         return HttpResponse.created(user)
     }
 
@@ -27,6 +27,6 @@ class UsersController(
     fun findById(
         @Parameter("id") id: String
     ): HttpResponse<User> {
-        return HttpResponse.ok(usersRepository.findById(id))
+        return HttpResponse.ok(usersMapRepository.findById(id).get())
     }
 }
