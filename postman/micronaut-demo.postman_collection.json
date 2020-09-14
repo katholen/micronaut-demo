@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "4d037363-eb87-49df-af2d-a1e8039ea62b",
+    "_postman_id": "2a9279aa-b3cc-4a58-93fa-55a069a9ca40",
     "name": "micronaut-demo",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
@@ -89,75 +89,83 @@
           "request": {
             "method": "POST",
             "header": [],
-			  "body": {
-				  "mode": "raw",
-				  "raw": "{\n    \"userName\": \"kevin\",\n    \"password\": \"password\"\n}",
-				  "options": {
-					  "raw": {
-						  "language": "json"
-					  }
-				  }
-			  },
-			  "url": {
-				  "raw": "http://localhost:8080/users",
-				  "protocol": "http",
-				  "host": [
-					  "localhost"
-				  ],
-				  "port": "8080",
-				  "path": [
-					  "users"
-				  ]
-			  }
-		  },
-			"response": []
-		}
-	  ],
-		"protocolProfileBehavior": {}
-	},
-	  {
-		  "name": "06",
-		  "item": [
-			  {
-				  "name": "GET /health",
-				  "request": {
-					  "method": "GET",
-					  "header": [],
-					  "url": {
-						  "raw": ""
-					  }
-				  },
-				  "response": []
-			  }
-		  ],
-		  "protocolProfileBehavior": {}
-	  },
-	  {
-		  "name": "07",
-		  "item": [
-			  {
-				  "name": "GET /swagger/swagger.yml",
-				  "request": {
-					  "method": "GET",
-					  "header": [],
-					  "url": {
-						  "raw": "http://localhost:8080/swagger/swagger.yml",
-						  "protocol": "http",
-						  "host": [
-							  "localhost"
-						  ],
-						  "port": "8080",
-						  "path": [
-							  "swagger",
-							  "swagger.yml"
-						  ]
-					  }
-				  },
-				  "response": []
-			  }
-		  ],
-		  "protocolProfileBehavior": {}
-	  }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userName\": \"kevin\",\n    \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "06",
+      "item": [
+        {
+          "name": "GET /health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "07",
+      "item": [
+        {
+          "name": "GET /swagger/swagger.yml",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/swagger/swagger.yml",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "swagger",
+                "swagger.yml"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
   ],
   "protocolProfileBehavior": {}
 }
