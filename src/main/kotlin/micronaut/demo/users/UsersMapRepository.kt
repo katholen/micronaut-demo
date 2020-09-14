@@ -13,6 +13,14 @@ class UsersMapRepository {
     }
 
     fun findById(id: String): Optional<User> {
-        return Optional.of(users[id]!!)
+        val lowercaseId = id.toLowerCase()
+        if (users.containsKey(lowercaseId)) {
+            return Optional.of(users[lowercaseId]!!)
+        }
+        return Optional.empty()
+    }
+
+    fun deleteAll() {
+        users.clear()
     }
 }
