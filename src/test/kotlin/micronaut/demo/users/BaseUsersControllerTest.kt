@@ -17,7 +17,7 @@ open class BaseUsersControllerTest {
     lateinit var server: EmbeddedServer
 
     @Inject
-    lateinit var usersRepository: UsersRepository
+    lateinit var usersMapRepository: UsersMapRepository
 
     private lateinit var client: HttpClient
 
@@ -29,7 +29,7 @@ open class BaseUsersControllerTest {
     @AfterEach
     fun teardown() {
         client.close()
-        usersRepository.deleteAll()
+        usersMapRepository.deleteAll()
     }
 
     protected fun validUser(): MutableMap<String, String> {

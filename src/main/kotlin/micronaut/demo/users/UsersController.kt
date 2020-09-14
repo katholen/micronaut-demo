@@ -14,18 +14,18 @@ import javax.validation.Valid
 @Validated
 @Controller("/users")
 class UsersController(
-    private val usersRepository: UsersRepository
+    private val usersMapRepository: UsersMapRepository
 ) {
 
     @Post
     fun create(
         @Valid @Body user: User
     ): HttpResponse<User> {
-        val existingUser = usersRepository.findById(user.userName)
+        val existingUser = usersMapRepository.findById(user.userName)
         if (existingUser.isPresent) {
             throw AlreadyExistsException()
         }
-        usersRepository.save(user)
+        usersMapRepository.save(user)
         return HttpResponse.created(user)
     }
 
@@ -33,7 +33,7 @@ class UsersController(
     fun findById(
         @Parameter("id") id: String
     ): HttpResponse<User> {
-        val user = usersRepository.findById(id)
+        val user = usersMapRepository.findById(id)
         if (user.isEmpty) {
             throw NotFoundException()
         }
