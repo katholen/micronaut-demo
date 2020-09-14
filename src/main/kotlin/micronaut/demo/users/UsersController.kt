@@ -12,7 +12,7 @@ import javax.validation.Valid
 @Validated
 @Controller("/users")
 class UsersController(
-    private val usersMapRepository: UsersMapRepository // Inject the Singleton of UsersMapRepository
+    private val usersMapRepository: UsersMapRepository
 ) {
 
     @Post
