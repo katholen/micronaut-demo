@@ -3,6 +3,7 @@ plugins {
     id "org.jetbrains.kotlin.kapt" version "1.3.72"
     id "org.jetbrains.kotlin.plugin.allopen" version "1.3.72"
     id "com.github.johnrengelman.shadow" version "6.0.0"
+    id "org.openapi.generator" version "4.3.1"
     id "application"
 }
 
@@ -107,5 +108,40 @@ tasks.withType(JavaExec) {
     }
 }
 
+task buildModels(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = 'kotlin'
+    outputDir = "$projectDir".toString()
+    inputSpec = 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/callback-example.yaml'
+    modelPackage = 'micronaut.demo.clients.models'
+    configFile = "$rootDir/openapi-generator.json".toString()
+    skipValidateSpec = true
+    generateModelTests = false
+    generateModelDocumentation = false
+    generateApiTests = false
+    generateApiDocumentation = false
+    skipOverwrite = true
+}
 
+clean {
+    delete 'src/main/kotlin/micronaut/demo/clients/models'
+    delete 'docs/swagger'
+}
+
+build {
+    dependsOn 'generate'
+
+    doLast {
+        copy {
+            from 'build/tmp/kapt3/classes/main/META-INF/swagger'
+            into 'docs/swagger'
+        }
+    }
+}
+
+task generate {
+    dependsOn 'buildModels'
+    doLast {
+        delete 'src/main/kotlin/org'
+    }
+}
 
