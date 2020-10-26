@@ -1,0 +1,66 @@
+openapi: 3.0.1
+paths:
+  /hello:
+    get:
+      operationId: helloWithName
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+          default: World
+      responses:
+        default:
+          description: helloWithName default response
+          content:
+            text/plain:
+              schema:
+                type: string
+  /users:
+    post:
+      operationId: create
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: create default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{id}:
+    get:
+      operationId: findById
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: findById default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      required:
+      - password
+      - userName
+      type: object
+      properties:
+        userName:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string

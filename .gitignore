@@ -2,3 +2,8 @@
 *.iml
 build
 .gradle
+
+.openapi-generator
+.openapi-generator-ignore
+src/main/kotlin/micronaut/demo/clients/models
+docs/swagger/views
